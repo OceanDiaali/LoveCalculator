@@ -37,6 +37,7 @@ public class RomanceCalcUI extends javax.swing.JFrame {
         exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(87, 120, 126));
 
         firstNameField.setBackground(new java.awt.Color(233, 210, 187));
         firstNameField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -84,7 +85,6 @@ public class RomanceCalcUI extends javax.swing.JFrame {
                         .addGap(141, 141, 141)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(resultLabel)
-                            .addComponent(resultPercentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(appLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -94,12 +94,17 @@ public class RomanceCalcUI extends javax.swing.JFrame {
                             .addComponent(secondNameField))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(exitButton)
-                .addGap(64, 64, 64)
-                .addComponent(calcButton)
-                .addGap(48, 48, 48)
-                .addComponent(clearButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(exitButton)
+                        .addGap(64, 64, 64)
+                        .addComponent(calcButton)
+                        .addGap(48, 48, 48)
+                        .addComponent(clearButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(resultPercentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,9 +114,9 @@ public class RomanceCalcUI extends javax.swing.JFrame {
                 .addComponent(appLabel)
                 .addGap(47, 47, 47)
                 .addComponent(resultLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resultPercentLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(secondNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,11 +156,11 @@ public class RomanceCalcUI extends javax.swing.JFrame {
         
         name1 = firstNameField.getText();
         name2 = secondNameField.getText();
-        double namesDiv = ((name1.length() / name2.length())*100);
+        double namesDiv = (((name1.length() * name2.length())*100)/100);
         
         if(namesDiv <= 39.9){
-          resultLabel.setText("No romance here..");
-          resultPercentLabel.setText(namesDiv+"%");
+          resultLabel.setText("Try your full,native names");
+          resultPercentLabel.setText(namesDiv+"%(No Romance!)");
         }else if(namesDiv <= 79.9){
           resultLabel.setText("Friendship exists");
           resultPercentLabel.setText(namesDiv+"%");
